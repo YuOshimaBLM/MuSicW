@@ -1,0 +1,42 @@
+.header {
+    position: absolute;
+    width: 1440px;
+    height: 165px;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+}
+.logo {
+    position: absolute;
+    width: 139px;
+    height: 52px;
+    left: 298px;
+    top: 57px;
+    font-size: 25px;
+    color: #505050;
+}
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    align-items: center;
+    width: 525px;
+    height: 60px;
+    left: 400px;
+    top: 99px;
+}
+nav ul li {
+    list-style: none;
+    margin: 0 20px;
+    padding: 12px 0 0;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #505050;
+}
+.headerImg {
+    width: 30px;
+    height: 30px;
+    left: 970px;
+    top: 99px;
+}
