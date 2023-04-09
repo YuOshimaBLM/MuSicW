@@ -8,7 +8,7 @@ const Header = () => {
         <h3>MuSicW</h3>
       </div>
       <nav>
-        <ul>
+        <ul className={classes.navFirst}>
           <li>
             <a href="#">Top</a>
           </li>
@@ -23,6 +23,29 @@ const Header = () => {
           </li>
           <li>
             <img className={classes.headerImg} src={login} />
+          </li>
+        </ul>
+      </nav>
+      <br></br>
+      <nav>
+        <ul className={classes.navSecond}>
+          <li>
+            <a href="#">Jpop</a>
+          </li>
+          <li>
+            <a href="#">アニメ</a>
+          </li>
+          <li>
+            <a href="#">邦ロック</a>
+          </li>
+          <li>
+            <a href="#">Kpop</a>
+          </li>
+          <li>
+            <a href="#">洋楽ポップス</a>
+          </li>
+          <li>
+            <a href="#">洋楽ロック</a>
           </li>
         </ul>
       </nav>
