@@ -1,0 +1,29 @@
+.Footer {
+  position: fixed;
+  width: 1440px;
+  height: 648px;
+  left: 0px;
+  top: 780px;
+  margin: 1.6em 3%;
+
+  .logo {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 25px;
+    color: #505050;
+  }
+  nav ul {
+    display: flex;
+    padding-left: 400px;
+    margin-bottom: 0px;
+  }
+  nav ul li {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    padding: 30px;
+    margin: 30px;
+    padding-left: 18px;
+    font-size: 18px;
+  }
+}

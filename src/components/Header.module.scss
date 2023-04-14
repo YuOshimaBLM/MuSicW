@@ -1,40 +1,46 @@
 .header {
-    width: 1440px;
-    height: 200px;
-    left: 0px;
-    top: 0px;
-    z-index: 10;
-    position: fixed;
-}
-.logo {
+  width: 1440px;
+  height: 200px;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+  margin: 1.6em 3%;
+  position: fixed;
+
+  .logo {
     padding-top: 20px;
     padding-left: 200px;
     font-size: 25px;
     color: #505050;
-}
-.navFirst {
+  }
+
+  .navFirst {
     display: flex;
     align-items: center;
     padding-left: 300px;
     margin-bottom: 0px;
-}
-nav ul li {
+  }
+
+  nav ul li {
     list-style: none;
     margin: 0 20px;
     padding: 12px 0 0;
-}
-nav ul li a {
+  }
+
+  nav ul li a {
     text-decoration: none;
     color: #505050;
-}
+  }
 
-.headerImg {
+  .headerImg {
     width: 30px;
     height: 30px;
-}
-.navSecond {
+  }
+
+  .navSecond {
     display: flex;
     color: #505050;
     margin-top: 0px;
     padding-left: 250px;
+  }
 }

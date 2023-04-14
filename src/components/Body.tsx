@@ -9,7 +9,8 @@ const Body = () => {
       </div>
       <hr />
       <div className={classes.topic}>
-        注目のレビューランキング
+        <h3>注目のレビュー　い</h3>
+        <h3 className={classes.ranking}>ランキング</h3>
         <button className={classes.button}>一覧を見る {">"} </button>
       </div>
       <hr></hr>
@@ -18,22 +19,22 @@ const Body = () => {
           <li>1位</li>
           <img src="https://via.placeholder.com/260" />
           <br></br>
-          <div>title</div>
-          <div>name</div>
+          <h3 className={classes.Title}>Title</h3>
+          <h3 className={classes.name}>name</h3>
         </ul>
         <ul>
           <li>2位</li>
           <img src="https://via.placeholder.com/260" />
           <br></br>
-          <div>title</div>
-          <div>name</div>
+          <h3 className={classes.Title}>Title</h3>
+          <h3 className={classes.name}>name</h3>
         </ul>
         <ul>
           <li>3位</li>
           <img src="https://via.placeholder.com/260" />
           <br></br>
-          <div>title</div>
-          <div>name</div>
+          <h3 className={classes.Title}>Title</h3>
+          <h3 className={classes.name}>name</h3>
         </ul>
       </nav>
     </div>
