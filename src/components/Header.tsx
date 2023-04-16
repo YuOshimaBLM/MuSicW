@@ -4,11 +4,11 @@ import login from "../images/login.png";
 const Header = () => {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>
-        <h3>MuSicW</h3>
+      <div className={classes.containerLogo}>
+        <h3 className={classes.Logo}>MuSicW</h3>
       </div>
-      <nav>
-        <ul className={classes.navFirst}>
+      <nav className={classes.containerNavFirst}>
+        <ul className={classes.ulFirst}>
           <li>
             <a href="#">Top</a>
           </li>
@@ -22,13 +22,13 @@ const Header = () => {
             <a href="#">Message</a>
           </li>
           <li>
-            <img className={classes.headerImg} src={login} />
+            <img className={classes.loginImg} src={login} />
           </li>
         </ul>
       </nav>
       <br></br>
-      <nav>
-        <ul className={classes.navSecond}>
+      <nav className={classes.containerNavSecond}>
+        <ul className={classes.ulSecond}>
           <li>
             <a href="#">Jpop</a>
           </li>

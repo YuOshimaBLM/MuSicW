@@ -1,29 +1,28 @@
-.Footer {
-  position: fixed;
-  width: 1440px;
-  height: 648px;
-  left: 0px;
-  top: 780px;
-  margin: 1.6em 3%;
+@import "../variable.scss";
 
+.Footer {
+  width: 1440px;
+  top: 780px;
   .logo {
     text-align: center;
-    padding-top: 20px;
-    font-size: 25px;
-    color: #505050;
+    font-size: $mainFontSaize;
+    color: $mainColor;
   }
-  nav ul {
+  .containerNavFooter {
     display: flex;
-    padding-left: 400px;
-    margin-bottom: 0px;
-  }
-  nav ul li {
-    display: flex;
-    list-style: none;
-    text-align: center;
-    padding: 30px;
-    margin: 30px;
-    padding-left: 18px;
-    font-size: 18px;
+    justify-content: space-around;
+    .ulFooter {
+      display: flex;
+      margin-bottom: 0px;
+      & li {
+        display: flex;
+        list-style: none;
+        text-align: center;
+        padding: 30px;
+        margin: 30px;
+        font-size: $listFontSaize;
+        color: $mainColor;
+      }
+    }
   }
 }
