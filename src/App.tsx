@@ -1,15 +1,37 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { Login } from "./components/Login";
 
 function App() {
   return (
-    <div className="App">
+    // <Router>
+    //   <div className="App">
+    //     <Header />
+    //     <Routes>
+    //       {/* <Body /> */}
+    //       <Route path="/">
+    //         <Body />
+    //       </Route>
+    //       <Route path="/login">
+    //         <Login />
+    //       </Route>
+    //     </Routes>
+    //     <Footer />
+    //   </div>
+    <Router>
       <Header />
-      <Body />
+      <Routes>
+        <Route path="/" element={<Body />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/about" element={<About />} /> */}
+        {/* <Route path="/contact" element={<Contact />} /> */}
+      </Routes>
       <Footer />
-    </div>
+    </Router>
+    // </Router>
   );
 }
 
