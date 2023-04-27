@@ -22,7 +22,9 @@ const Header = () => {
             <a href="#">Message</a>
           </li>
           <li>
-            <img className={classes.loginImg} src={login} />
+            <button>
+              <img className={classes.loginImg} src={login} />
+            </button>
           </li>
         </ul>
       </nav>
