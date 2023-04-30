@@ -1,7 +1,11 @@
 import classes from "./Header.module.scss";
 import login from "../images/login.png";
+import { useAppSelector } from "../app/hooks";
+import { auth } from "../firebase";
 
 const Header = () => {
+  const user = useAppSelector((state) => state.user);
+
   return (
     <header className={classes.header}>
       <div className={classes.containerLogo}>
@@ -21,9 +25,19 @@ const Header = () => {
           <li>
             <a href="#">Message</a>
           </li>
-          <li>
-            <img className={classes.loginImg} src={login} />
-          </li>
+          {user ? (
+            <li>
+              <img
+                className={classes.loginImg}
+                src={user.photo}
+                onClick={() => auth.signOut()}
+              />
+            </li>
+          ) : (
+            <li>
+              <img className={classes.loginImg} src={login} />
+            </li>
+          )}
         </ul>
       </nav>
       <br></br>
