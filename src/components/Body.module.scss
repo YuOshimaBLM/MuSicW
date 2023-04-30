@@ -1,5 +1,6 @@
 @import "../variable.scss";
 
+
 .body {
   width: 1440px;
   height: 650px;
@@ -53,8 +54,7 @@
       & li {
         list-style: none;
         text-align: center;
-        margin: 5px 20px;
-        padding: 12px 0 0;
+        padding: 20px 0 0;
         font-size: $listFontSaize;
         color: $mainColor;
       }
