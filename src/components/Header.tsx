@@ -2,8 +2,10 @@ import classes from "./Header.module.scss";
 import login from "../images/login.png";
 import { useAppSelector } from "../app/hooks";
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const user = useAppSelector((state) => state.user);
 
   return (
@@ -35,7 +37,11 @@ const Header = () => {
             </li>
           ) : (
             <li>
-              <img className={classes.loginImg} src={login} />
+              <img
+                className={classes.loginImg}
+                src={login}
+                onClick={() => navigate("/login")}
+              />
             </li>
           )}
         </ul>

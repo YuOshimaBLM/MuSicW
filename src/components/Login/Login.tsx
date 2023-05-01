@@ -1,12 +1,16 @@
 import { signInWithPopup } from "firebase/auth";
 import classes from "./Login.module.scss";
 import { auth, provider } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const SignInWithGoogleAccount = () => {
-    signInWithPopup(auth, provider).catch((err) => {
-      alert(err.message);
-    });
+    signInWithPopup(auth, provider)
+      .then(() => navigate("/"))
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
   return (
