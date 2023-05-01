@@ -29,11 +29,10 @@ const Header = () => {
           </li>
           {user ? (
             <li>
-              <img
-                className={classes.loginImg}
-                src={user.photo}
-                onClick={() => auth.signOut()}
-              />
+              <img className={classes.loginImg} src={user.photo} />
+              <p className={classes.logout} onClick={() => auth.signOut()}>
+                Logout
+              </p>
             </li>
           ) : (
             <li>

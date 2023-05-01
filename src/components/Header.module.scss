@@ -20,6 +20,8 @@
     .ulFirst {
       display: flex;
       & li {
+        display: flex;
+        justify-content: space-around;
         margin-top: 10px;
         list-style: none;
         & a {
@@ -29,9 +31,17 @@
           color: $mainColor;
         }
         .loginImg {
+          display: flex;
+          justify-content: center;
           padding-left: 70px;
           width: 30px;
           height: 30px;
+        }
+        .logout {
+          font-size: $listFontSaize;
+          margin-top: 10px;
+          padding-left: 20px;
+          color: $mainColor;
         }
       }
     }
