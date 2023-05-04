@@ -1,7 +1,38 @@
 import classes from "./Body.module.scss";
+import Ranking from "../ranking/Ranking";
 import find from "../../images/find.png";
+import { useEffect, useState } from "react";
+import { db } from "../../firebase";
+import {
+  onSnapshot,
+  collection,
+  query,
+  DocumentData,
+} from "firebase/firestore";
+
+interface Channel {
+  id: string;
+  channel: DocumentData;
+}
 
 const Body = () => {
+  const [reviews, setReviews] = useState<Channel[]>([]);
+
+  const q = query(collection(db, "Reviews"));
+
+  useEffect(() => {
+    onSnapshot(q, (querySnapShot) => {
+      const channelsResults: Channel[] = [];
+      querySnapShot.docs.forEach((doc) =>
+        channelsResults.push({
+          id: doc.id,
+          channel: doc.data(),
+        })
+      );
+      setReviews(channelsResults);
+    });
+  }, []);
+
   return (
     <div className={classes.body}>
       <div className={classes.containerFind}>
@@ -14,27 +45,11 @@ const Body = () => {
       </div>
       <hr />
       <nav className={classes.containerNavBody}>
-        <ul className={classes.ulBody}>
-          <li>1位</li>
-          <img src="https://via.placeholder.com/260" />
-          <br></br>
-          <h3 className={classes.Title}>Title</h3>
-          <h3 className={classes.name}>name</h3>
-        </ul>
-        <ul className={classes.ulBody}>
-          <li>2位</li>
-          <img src="https://via.placeholder.com/260" />
-          <br></br>
-          <h3 className={classes.Title}>Title</h3>
-          <h3 className={classes.name}>name</h3>
-        </ul>
-        <ul className={classes.ulBody}>
-          <li>3位</li>
-          <img src="https://via.placeholder.com/260" />
-          <br></br>
-          <h3 className={classes.Title}>Title</h3>
-          <h3 className={classes.name}>name</h3>
-        </ul>
+        {reviews.slice(0, 3).map((channel) => (
+          <Ranking />
+        ))}
+        {/* <Ranking />
+        <Ranking /> */}
       </nav>
     </div>
   );

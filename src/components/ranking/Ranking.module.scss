@@ -1,0 +1,23 @@
+@import "../../variable.scss";
+
+.ulBody {
+  list-style: none;
+  & li {
+    list-style: none;
+    text-align: center;
+    margin: 5px 20px;
+    padding: 12px 0 0;
+    font-size: $listFontSaize;
+    color: $mainColor;
+  }
+  .Title {
+    margin-top: 8px;
+    font-size: $h3FontSaize;
+    color: $mainColor;
+  }
+  .name {
+    margin-top: 8px;
+    font-size: $h3FontSaize;
+    color: $mainColor;
+  }
+}
