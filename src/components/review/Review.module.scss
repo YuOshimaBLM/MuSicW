@@ -1,0 +1,69 @@
+@import "../../variable.scss";
+
+.review {
+  width: 1440px;
+  height: 650px;
+  left: 0px;
+  top: 180px;
+  margin: 0 auto;
+  .genre {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    .genreText {
+      font-size: $listFontSaize;
+      color: $mainColor;
+    }
+    .genreSelect {
+      margin-left: 20px;
+    }
+  }
+  .title {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    .titleText {
+      font-size: $listFontSaize;
+      color: $mainColor;
+    }
+    .titleInput {
+      margin-left: 20px;
+      padding-right: 80px;
+    }
+  }
+  .file {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    .fileText {
+      font-size: $listFontSaize;
+      color: $mainColor;
+    }
+    .fileInput {
+      margin-left: 20px;
+      padding-right: 80px;
+    }
+  }
+  .main {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    .mainText {
+      font-size: $listFontSaize;
+      color: $mainColor;
+    }
+    .mainInput {
+      margin-left: 20px;
+      padding-right: 500px;
+      padding-bottom: 350px;
+    }
+  }
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .button {
+      margin-top: 30px;
+    }
+  }
+}

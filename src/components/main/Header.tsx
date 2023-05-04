@@ -1,7 +1,7 @@
 import classes from "./Header.module.scss";
-import login from "../images/login.png";
-import { useAppSelector } from "../app/hooks";
-import { auth } from "../firebase";
+import login from "../../images/login.png";
+import { useAppSelector } from "../../app/hooks";
+import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {

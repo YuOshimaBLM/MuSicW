@@ -1,5 +1,5 @@
 import classes from "./Body.module.scss";
-import find from "../images/find.png";
+import find from "../../images/find.png";
 
 const Body = () => {
   return (
