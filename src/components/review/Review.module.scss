@@ -5,65 +5,85 @@
   height: 650px;
   left: 0px;
   top: 180px;
-  margin: 0 auto;
+  margin: 0 15rem;
+  border: ridge 1px;
+  background-color: whitesmoke;
   .genre {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     margin-top: 30px;
+    margin-left: 10px;
     .genreText {
       font-size: $listFontSaize;
       color: $mainColor;
     }
     .genreSelect {
-      margin-left: 20px;
+      width: 120px;
+      border-radius: 5px;
+      border: ridge 1px;
     }
   }
   .title {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     margin-top: 30px;
+    margin-left: 10px;
     .titleText {
       font-size: $listFontSaize;
       color: $mainColor;
     }
     .titleInput {
-      margin-left: 20px;
       padding-right: 80px;
+      width: 200px;
+      border-radius: 5px;
+      border: ridge 1px;
     }
   }
   .file {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     margin-top: 30px;
+    margin-left: 10px;
     .fileText {
       font-size: $listFontSaize;
       color: $mainColor;
     }
     .fileInput {
-      margin-left: 20px;
       padding-right: 80px;
     }
   }
   .main {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     margin-top: 30px;
+    margin-left: 10px;
     .mainText {
       font-size: $listFontSaize;
       color: $mainColor;
     }
     .mainInput {
-      margin-left: 20px;
-      padding-right: 500px;
-      padding-bottom: 350px;
+      width: 80%;
+      padding-bottom: 15%;
+      border-radius: 5px;
+      border: ridge 1px;
     }
   }
   .buttonContainer {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    margin-top: 40px;
+    margin-left: 10px;
     .button {
-      margin-top: 30px;
+      width: 100%;
+      margin: 5px;
+      background-color: #003333;
+      color: #eeeeee;
     }
   }
 }

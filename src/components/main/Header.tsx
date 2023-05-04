@@ -12,14 +12,19 @@ const Header = () => {
     <header className={classes.header}>
       <div className={classes.containerLogo}>
         <h3 className={classes.Logo}>MuSicW</h3>
+        {user ? (
+          <div className={classes.LogoName}>{user.email}　さん</div>
+        ) : (
+          <div className={classes.LogoName}>ようこそ、ゲストさん</div>
+        )}
       </div>
       <nav className={classes.containerNavFirst}>
         <ul className={classes.ulFirst}>
           <li>
-            <a href="#">Top</a>
+            <a href="/">Top</a>
           </li>
           <li>
-            <a href="#">Review</a>
+            <a href="/review">Review</a>
           </li>
           <li>
             <a href="#">Mypage</a>

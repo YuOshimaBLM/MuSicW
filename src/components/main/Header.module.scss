@@ -5,12 +5,18 @@
   height: 200px;
   .containerLogo {
     display: flex;
+    justify-content: space-between;
     height: 8vh;
     .Logo {
       padding-top: 30px;
       padding-left: 330px;
       color: $mainColor;
       font-size: $mainFontSaize;
+    }
+    .LogoName {
+      margin-right: 80px;
+      padding-top: 30px;
+      color: $mainColor;
     }
   }
   .containerNavFirst {
