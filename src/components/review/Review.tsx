@@ -1,6 +1,7 @@
 import classes from "./Review.module.scss";
 
 const Review = () => {
+  const OnFileUploadToFirebase = () => {};
   return (
     <div className={classes.review}>
       <div className={classes.genre}>
@@ -25,6 +26,8 @@ const Review = () => {
           multiple
           type="file"
           name="imageURL"
+          accept=".png .jpeg.jpg"
+          onClick={OnFileUploadToFirebase}
         ></input>
       </div>
       <div className={classes.main}>
