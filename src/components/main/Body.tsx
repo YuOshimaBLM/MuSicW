@@ -46,7 +46,7 @@ const Body = () => {
       <hr />
       <nav className={classes.containerNavBody}>
         {reviews.slice(0, 3).map((channel) => (
-          <Ranking />
+          <Ranking channel={channel} id={channel.id} key={channel.id} />
         ))}
         {/* <Ranking />
         <Ranking /> */}
