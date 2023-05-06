@@ -13,7 +13,7 @@ const Ranking = (props: props) => {
       <li>1位</li>
       <img src="https://via.placeholder.com/260" />
       <br></br>
-      <h3 className={classes.Title}>{channel.channel.TitleName}</h3>
+      <h3 className={classes.Title}>{channel.channel.titleName}</h3>
     </ul>
   );
 };

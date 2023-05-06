@@ -1,37 +1,10 @@
 import classes from "./Body.module.scss";
 import Ranking from "../ranking/Ranking";
 import find from "../../images/find.png";
-import { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import {
-  onSnapshot,
-  collection,
-  query,
-  DocumentData,
-} from "firebase/firestore";
-
-interface Channel {
-  id: string;
-  channel: DocumentData;
-}
+import useCollection from "../../hooks/useCollection";
 
 const Body = () => {
-  const [reviews, setReviews] = useState<Channel[]>([]);
-
-  const q = query(collection(db, "Reviews"));
-
-  useEffect(() => {
-    onSnapshot(q, (querySnapShot) => {
-      const channelsResults: Channel[] = [];
-      querySnapShot.docs.forEach((doc) =>
-        channelsResults.push({
-          id: doc.id,
-          channel: doc.data(),
-        })
-      );
-      setReviews(channelsResults);
-    });
-  }, []);
+  const { documents: reviews } = useCollection("reviews");
 
   return (
     <div className={classes.body}>
