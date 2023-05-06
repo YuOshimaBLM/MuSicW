@@ -6,3 +6,7 @@ export interface InitialUserState {
     displayName: string;
   };
 }
+
+export type Props = {
+  onClick: (event: React.MouseEvent<HTMLInputElement>) => void;
+};

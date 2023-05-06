@@ -1,7 +1,30 @@
 import classes from "./Review.module.scss";
+import { storage } from "../../firebase";
+import { ref, uploadBytesResumable } from "firebase/storage";
+import { useState } from "react";
 
 const Review = () => {
-  const OnFileUploadToFirebase = () => {};
+  const [loading, setLoading] = useState(false);
+  const [isUploaded, setUploaded] = useState(false);
+
+  const OnFileUploadToFirebase = (e: any) => {
+    const file = e.target.files[0];
+    const storageRef = ref(storage, "image/" + file.name);
+    const uploadImage = uploadBytesResumable(storageRef, file);
+    uploadImage.on(
+      "state_changed",
+      (snapshot) => {
+        setLoading(true);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        setLoading(false);
+        setUploaded(true);
+      }
+    );
+  };
   return (
     <div className={classes.review}>
       <div className={classes.genre}>
@@ -26,9 +49,24 @@ const Review = () => {
           multiple
           type="file"
           name="imageURL"
-          accept=".png .jpeg.jpg"
-          onClick={OnFileUploadToFirebase}
+          accept=".png, .jpeg, .jpg"
+          onChange={OnFileUploadToFirebase}
         ></input>
+        {loading ? (
+          <p className={classes.fileBoolean}>アップロード中...</p>
+        ) : (
+          <>
+            {isUploaded ? (
+              <p className={classes.fileBoolean}>
+                ファイルアップロードが完了しました！
+              </p>
+            ) : (
+              <p className={classes.fileBoolean}>
+                ファイルが選択されていません
+              </p>
+            )}
+          </>
+        )}
       </div>
       <div className={classes.main}>
         <p className={classes.mainText}>本文</p>
