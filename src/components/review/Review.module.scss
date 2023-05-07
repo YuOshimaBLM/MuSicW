@@ -52,11 +52,40 @@
       color: $mainColor;
     }
     .fileInput {
-      padding-right: 80px;
+      display: none;
     }
-    .fileBoolean {
-      font-size: 14px;
+    .materialIconContainer {
+      width: 160px;
+      border-radius: 5px;
+      border: ridge 1px;
+      background-color: $reviwColor;
       color: $mainColor;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .materialIcon {
+        font-size: 32px;
+      }
+      .fileFalse {
+        padding-left: 8px;
+        font-size: 14px;
+      }
+    }
+    .fileTrue {
+      width: 270px;
+      border-radius: 5px;
+      border: ridge 1px;
+      background-color: $reviwColor;
+      color: $mainColor;
+      font-size: 14px;
+    }
+    .fileUploading {
+      width: 140px;
+      border-radius: 5px;
+      border: ridge 1px;
+      background-color: $reviwColor;
+      color: $mainColor;
+      font-size: 14px;
     }
   }
   .main {
@@ -87,7 +116,7 @@
       width: 100%;
       margin: 5px;
       background-color: #003333;
-      color: #eeeeee;
+      color: $reviwColor;
     }
   }
 }
