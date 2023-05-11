@@ -28,7 +28,7 @@ const Review = () => {
       genre: genre,
       titleName: title,
       uid: user?.uid,
-      photoURL: photoURL,
+      photoURL: imagePath,
       mainText: mainText,
       createdAt: serverTimestamp(),
     });
@@ -66,7 +66,6 @@ const Review = () => {
     console.log("photoURL", photoURL);
     getDownloadURL(gsReference).then((url) => {
       setImagePath(url);
-      console.log(url);
     });
   };
 
@@ -147,7 +146,7 @@ const Review = () => {
             ) : (
               <div className={classes.imageGetContainer}>
                 <div className={classes.imageGet} onClick={previewImage}>
-                  画像を表示
+                  画像を取得
                 </div>
                 <div className={classes.imageGetIcon}>
                   <AddPhotoAlternateIcon />

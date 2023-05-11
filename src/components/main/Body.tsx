@@ -21,8 +21,6 @@ const Body = () => {
         {reviews.slice(0, 3).map((channel) => (
           <Ranking channel={channel} id={channel.id} key={channel.id} />
         ))}
-        {/* <Ranking />
-        <Ranking /> */}
       </nav>
     </div>
   );

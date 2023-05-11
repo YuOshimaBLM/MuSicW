@@ -7,11 +7,12 @@ type props = {
 };
 
 const Ranking = (props: props) => {
-  const { id, channel } = props;
+  const { channel } = props;
+
   return (
     <ul className={classes.ulBody}>
       <li>1位</li>
-      <img src="https://via.placeholder.com/260" />
+      <img className={classes.photoImage} src={channel.channel.photoURL} />
       <br></br>
       <h3 className={classes.Title}>{channel.channel.titleName}</h3>
     </ul>
