@@ -2,7 +2,6 @@
 
 .review {
   width: 1440px;
-  height: 650px;
   left: 0px;
   top: 180px;
   margin: 0 12rem;
@@ -19,7 +18,7 @@
       color: $mainColor;
     }
     .genreSelect {
-      width: 120px;
+      width: 135px;
       border-radius: 5px;
       border: ridge 1px;
     }
@@ -51,41 +50,71 @@
       font-size: $listFontSaize;
       color: $mainColor;
     }
-    .fileInput {
-      display: none;
-    }
-    .materialIconContainer {
-      width: 160px;
-      border-radius: 5px;
-      border: ridge 1px;
-      background-color: $reviwColor;
-      color: $mainColor;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      .materialIcon {
-        font-size: 32px;
+    .fileInputContainer {
+      width: 10px;
+      .fileInput {
+        display: none;
+        width: 100px;
+        border-radius: 5px;
+        border: ridge 1px;
       }
-      .fileFalse {
-        padding-left: 8px;
+      .materialIconContainer {
+        width: 160px;
+        border-radius: 5px;
+        border: ridge 1px;
+        background-color: $reviwColor;
+        color: $mainColor;
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        cursor: pointer;
+        .materialIcon {
+          font-size: 32px;
+        }
+        .fileFalse {
+          padding-left: 8px;
+          font-size: 14px;
+        }
+      }
+      .imagePath {
+        width: 450px;
+        height: 320px;
+      }
+      .fileTrue {
+        width: 270px;
+        border-radius: 5px;
+        border: ridge 1px;
+        margin-top: 20px;
+        background-color: $reviwColor;
+        color: $mainColor;
+        font-size: 14px;
+      }
+      .fileUploading {
+        width: 140px;
+        border-radius: 5px;
+        border: ridge 1px;
+        margin-top: 20px;
+        background-color: $reviwColor;
+        color: $mainColor;
         font-size: 14px;
       }
     }
-    .fileTrue {
-      width: 270px;
-      border-radius: 5px;
-      border: ridge 1px;
+    .imageGetContainer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 20px;
       background-color: $reviwColor;
       color: $mainColor;
-      font-size: 14px;
-    }
-    .fileUploading {
-      width: 140px;
-      border-radius: 5px;
-      border: ridge 1px;
-      background-color: $reviwColor;
-      color: $mainColor;
-      font-size: 14px;
+      width: 120px;
+      .imageGet {
+        font-size: 14px;
+        padding-left: 5px;
+      }
+      .imageGetIcon {
+        font-size: 20px;
+        margin-left: 10px;
+      }
     }
   }
   .main {

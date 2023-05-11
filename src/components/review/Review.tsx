@@ -1,9 +1,9 @@
 import classes from "./Review.module.scss";
 import { db, storage } from "../../firebase";
 import {
-  StorageReference,
   getDownloadURL,
   ref,
+  getStorage,
   uploadBytesResumable,
 } from "firebase/storage";
 import { useState } from "react";
@@ -14,50 +14,74 @@ import { useAppSelector } from "../../app/hooks";
 const Review = () => {
   const [loading, setLoading] = useState(false);
   const [isUploaded, setUploaded] = useState(false);
+  const [genre, setGenre] = useState("");
   const [title, setTitle] = useState("");
+  const [mainText, setMainText] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
+  const [imagePath, setImagePath] = useState("");
+  const [showFlg, setShowFlg] = useState(false);
 
   const user = useAppSelector((state) => state.user);
 
   const addReview = async () => {
     await addDoc(collection(db, "reviews"), {
+      genre: genre,
       titleName: title,
-      uid: { user },
-      photoURL: "",
+      uid: user?.uid,
+      photoURL: photoURL,
+      mainText: mainText,
       createdAt: serverTimestamp(),
     });
   };
 
-  const OnFileUploadToFirebase = (e: any) => {
-    const file = e.target.files[0];
-    const ext = file.name.split(".").pop();
+  const OnFileUploadToFirebase = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    const ext = file?.name.split(".").pop();
     const fileName = `${Date.now()}.${ext}`;
     const filePath = `images/${fileName}`;
     const storageRef = ref(storage, filePath);
-    const uploadImage = uploadBytesResumable(storageRef, file);
-    uploadImage.on(
-      "state_changed",
-      (snapshot) => {
-        setLoading(true);
-      },
-      (err) => {
-        console.log(err);
-      },
-      () => {
-        setLoading(false);
-        setUploaded(true);
-        const newImage: {
-          id: string;
-          path: (ref: StorageReference) => Promise<string>;
-        } = { id: fileName, path: getDownloadURL };
-        console.log(newImage.path);
-      }
-    );
+    if (file) {
+      const uploadImage = uploadBytesResumable(storageRef, file);
+      uploadImage.on(
+        "state_changed",
+        (snapshot) => {
+          setLoading(true);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          setLoading(false);
+          setUploaded(true);
+          setPhotoURL("gs://musicreviw-0331.appspot.com/" + filePath);
+        }
+      );
+    }
   };
+
+  const previewImage = () => {
+    setShowFlg(true);
+    const storage = getStorage();
+    const gsReference = ref(storage, photoURL);
+    console.log("photoURL", photoURL);
+    getDownloadURL(gsReference).then((url) => {
+      setImagePath(url);
+      console.log(url);
+    });
+  };
+
   return (
     <div className={classes.review}>
       <div className={classes.genre}>
         <p className={classes.genreText}>ジャンル</p>
-        <select className={classes.genreSelect} name="genre">
+        <select
+          onChange={(e) => setGenre(e.target.value)}
+          className={classes.genreSelect}
+          name="genre"
+        >
+          <option value="" selected>
+            選択してください
+          </option>
           <option value="Jpop">Jpop</option>
           <option value="アニメ">アニメ</option>
           <option value="邦ロック">邦ロック</option>
@@ -78,7 +102,7 @@ const Review = () => {
       </div>
       <div className={classes.file}>
         <p className={classes.fileText}>画像</p>
-        <label>
+        <label className={classes.fileInputContainer}>
           <input
             className={classes.fileInput}
             multiple
@@ -94,7 +118,15 @@ const Review = () => {
             <>
               {isUploaded ? (
                 <>
-                  {/* <img alt="プレビュー画像" src={newImage.path}></img> */}
+                  {showFlg ? (
+                    <img
+                      className={classes.imagePath}
+                      alt="プレビュー画像"
+                      src={imagePath}
+                    ></img>
+                  ) : (
+                    <></>
+                  )}
                   <p className={classes.fileTrue}>
                     ファイルアップロードが完了しました！
                   </p>
@@ -108,10 +140,32 @@ const Review = () => {
             </>
           )}
         </label>
+        {isUploaded ? (
+          <>
+            {showFlg ? (
+              <></>
+            ) : (
+              <div className={classes.imageGetContainer}>
+                <div className={classes.imageGet} onClick={previewImage}>
+                  画像を表示
+                </div>
+                <div className={classes.imageGetIcon}>
+                  <AddPhotoAlternateIcon />
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <div className={classes.main}>
         <p className={classes.mainText}>本文</p>
-        <textarea className={classes.mainInput} name="main"></textarea>
+        <textarea
+          onChange={(e) => setMainText(e.target.value)}
+          className={classes.mainInput}
+          name="main"
+        ></textarea>
       </div>
       <div className={classes.buttonContainer}>
         <button onClick={addReview} className={classes.button}>
