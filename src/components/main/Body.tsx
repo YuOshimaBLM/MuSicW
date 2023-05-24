@@ -9,7 +9,7 @@ const Body = () => {
   return (
     <div className={classes.body}>
       <div className={classes.containerFind}>
-        <img className={classes.find} src={find} />
+        <img className={classes.find} src={find} alt="イメージ" />
       </div>
       <hr />
       <div className={classes.containerTopic}>
