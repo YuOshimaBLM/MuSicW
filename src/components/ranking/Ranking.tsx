@@ -1,8 +1,6 @@
 import classes from "./Ranking.module.scss";
 import { DocumentData } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../app/hooks";
-import { setReviewInfo } from "../../features/reviewSlice";
 
 type props = {
   id: string;
@@ -14,7 +12,7 @@ const Ranking = (props: props) => {
   const navigate = useNavigate();
 
   const sendDetail = () => {
-    navigate("/detail", { state: { channel } });
+    navigate("/detail", { state: channel });
     console.log("state", channel);
   };
 

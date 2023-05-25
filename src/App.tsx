@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Review from "./components/review/Review";
 import Detail from "./components/detail/Detail";
+import { channel } from "diagnostics_channel";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,7 +40,10 @@ function App() {
           <Route path="/" element={<Body />} />
           <Route path="/login" element={<Login />} />
           <Route path="/review" element={<Review />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route
+            path="/detail"
+            element={<Detail id={""} channel={channel} />}
+          />
         </Routes>
         <Footer />
       </div>

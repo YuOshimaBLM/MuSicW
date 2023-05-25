@@ -1,7 +1,13 @@
 import classes from "./Detail.module.scss";
+import { DocumentData } from "firebase/firestore";
 
-const Detail = (props: any) => {
-  console.log(props);
+type props = {
+  id: string;
+  channel: DocumentData;
+};
+
+const Detail = (props: props) => {
+  console.log(props.channel);
   // const { channel } = props;
   // console.log(channel);
   // const imageUrl = channel?.photoURL;
