@@ -1,6 +1,6 @@
 import classes from "./Ranking.module.scss";
 import { DocumentData } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type props = {
   id: string;
@@ -9,22 +9,19 @@ type props = {
 
 const Ranking = (props: props) => {
   const { channel } = props;
-  const navigate = useNavigate();
-
-  const sendDetail = () => {
-    navigate("/detail", { state: channel });
-    console.log("state", channel);
-  };
+  console.log("Rankingchannel", channel);
 
   return (
     <ul className={classes.ulBody}>
       <li>1位</li>
-      <img
-        onClick={sendDetail}
-        className={classes.photoImage}
-        src={channel.channel.photoURL}
-        alt="イメージ"
-      />
+      <Link to={"/detail"} state={channel} id={channel.id} key={channel.id}>
+        <img
+          // onClick={sendDetail}
+          className={classes.photoImage}
+          src={channel.channel.photoURL}
+          alt="イメージ"
+        />
+      </Link>
       <br></br>
       <h3 className={classes.Title}>{channel.channel.titleName}</h3>
     </ul>

@@ -40,10 +40,7 @@ function App() {
           <Route path="/" element={<Body />} />
           <Route path="/login" element={<Login />} />
           <Route path="/review" element={<Review />} />
-          <Route
-            path="/detail"
-            element={<Detail id={""} channel={channel} />}
-          />
+          <Route path="/detail" element={<Detail />} />
         </Routes>
         <Footer />
       </div>

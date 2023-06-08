@@ -1,30 +1,55 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import classes from "./Detail.module.scss";
-import { DocumentData } from "firebase/firestore";
+import {
+  DocumentData,
+  addDoc,
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { db, storage } from "../../firebase";
+import useCollection from "../../hooks/useCollection";
 
 type props = {
   id: string;
   channel: DocumentData;
 };
 
-const Detail = (props: props) => {
-  console.log(props.channel);
-  // const { channel } = props;
-  // console.log(channel);
-  // const imageUrl = channel?.photoURL;
+const Detail = () => {
+  const [count, setCount] = useState();
+  const firebaseConut = doc(db, "reviews", "pUDYbetB1MKUsbQmrysY");
+  const firebaseTest = () => {
+    updateDoc(firebaseConut, {
+      count: count,
+    });
+  };
 
+  const location = useLocation();
+  const { channel } = location.state as DocumentData;
+  console.log("DetailChannel", channel.id);
   return (
     <div className={classes.detail}>
       <div className={classes.TitleContainer}>
-        <p className={classes.Title}>タイトル</p>
+        <p className={classes.Title}>{channel.titleName}</p>
       </div>
       <div className={classes.createdAtContainer}>
-        <p className={classes.createdAt}>2023/05/11</p>
+        {/* <p className={classes.createdAt}>{channel.createdAt}</p> */}
       </div>
       <div className={classes.imageContainer}>
-        {/* <img className={classes.image} alt="イメージ" src={imageUrl}></img> */}
+        <img
+          className={classes.image}
+          alt="イメージ"
+          src={channel.photoURL}
+        ></img>
       </div>
       <div className={classes.mainTextContainer}>
-        <p>本文</p>
+        <p>{channel.mainText}</p>
+      </div>
+      <div>
+        <button onClick={firebaseTest}>test</button>
       </div>
     </div>
   );
