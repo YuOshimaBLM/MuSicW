@@ -12,14 +12,16 @@ type props = {
 
 const Detail = () => {
   const location = useLocation();
-  const { channel } = location.state as DocumentData;
-  console.log("DetailChannel", channel);
+  const { state: channel } = location;
 
+  console.log("DetailChannel", channel);
   const [count, setCount] = useState(null);
+
+  const documentID = channel.id;
 
   useEffect(() => {
     const fetchCount = async () => {
-      const firebaseCountDoc = doc(db, "reviews", "pUDYbetB1MKUsbQmrysY");
+      const firebaseCountDoc = doc(db, "reviews", documentID);
       const countSnapshot = await getDoc(firebaseCountDoc);
       if (countSnapshot.exists()) {
         const countData = countSnapshot.data();
@@ -28,22 +30,22 @@ const Detail = () => {
       }
     };
     fetchCount();
-  }, []);
+  }, [documentID]);
 
   useEffect(() => {
     if (count !== null) {
       const updateFirebaseCount = async () => {
-        const firebaseCountDoc = doc(db, "reviews", "pUDYbetB1MKUsbQmrysY");
+        const firebaseCountDoc = doc(db, "reviews", documentID);
         await updateDoc(firebaseCountDoc, { count });
       };
       updateFirebaseCount();
     }
-  }, [count]);
+  }, [count, documentID]);
 
   return (
     <div className={classes.detail}>
       <div className={classes.TitleContainer}>
-        <p className={classes.Title}>{channel.titleName}</p>
+        <p className={classes.Title}>{channel.channel.titleName}</p>
       </div>
       <div className={classes.createdAtContainer}>
         {/* <p className={classes.createdAt}>{channel.createdAt}</p> */}
@@ -52,11 +54,11 @@ const Detail = () => {
         <img
           className={classes.image}
           alt="イメージ"
-          src={channel.photoURL}
+          src={channel.channel.photoURL}
         ></img>
       </div>
       <div className={classes.mainTextContainer}>
-        <p>{channel.mainText}</p>
+        <p>{channel.channel.mainText}</p>
       </div>
       <div>{/* <button onClick={firebaseTest}>test</button> */}</div>
     </div>
