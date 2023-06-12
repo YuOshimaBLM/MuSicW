@@ -1,17 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import classes from "./Detail.module.scss";
-import {
-  DocumentData,
-  addDoc,
-  collection,
-  doc,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { DocumentData, doc, getDoc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { db, storage } from "../../firebase";
-import useCollection from "../../hooks/useCollection";
+import { db } from "../../firebase";
 
 type props = {
   id: string;
@@ -19,17 +11,35 @@ type props = {
 };
 
 const Detail = () => {
-  const [count, setCount] = useState();
-  const firebaseConut = doc(db, "reviews", "pUDYbetB1MKUsbQmrysY");
-  const firebaseTest = () => {
-    updateDoc(firebaseConut, {
-      count: count,
-    });
-  };
-
   const location = useLocation();
   const { channel } = location.state as DocumentData;
-  console.log("DetailChannel", channel.id);
+  console.log("DetailChannel", channel);
+
+  const [count, setCount] = useState(null);
+
+  useEffect(() => {
+    const fetchCount = async () => {
+      const firebaseCountDoc = doc(db, "reviews", "pUDYbetB1MKUsbQmrysY");
+      const countSnapshot = await getDoc(firebaseCountDoc);
+      if (countSnapshot.exists()) {
+        const countData = countSnapshot.data();
+        const initialCount = countData.count;
+        setCount(initialCount + 1);
+      }
+    };
+    fetchCount();
+  }, []);
+
+  useEffect(() => {
+    if (count !== null) {
+      const updateFirebaseCount = async () => {
+        const firebaseCountDoc = doc(db, "reviews", "pUDYbetB1MKUsbQmrysY");
+        await updateDoc(firebaseCountDoc, { count });
+      };
+      updateFirebaseCount();
+    }
+  }, [count]);
+
   return (
     <div className={classes.detail}>
       <div className={classes.TitleContainer}>
@@ -48,9 +58,7 @@ const Detail = () => {
       <div className={classes.mainTextContainer}>
         <p>{channel.mainText}</p>
       </div>
-      <div>
-        <button onClick={firebaseTest}>test</button>
-      </div>
+      <div>{/* <button onClick={firebaseTest}>test</button> */}</div>
     </div>
   );
 };
