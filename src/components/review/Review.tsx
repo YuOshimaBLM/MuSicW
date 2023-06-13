@@ -25,6 +25,7 @@ const Review = () => {
 
   const addReview = async () => {
     await addDoc(collection(db, "reviews"), {
+      count: 0,
       genre: genre,
       titleName: title,
       uid: user?.uid,
