@@ -5,7 +5,14 @@ import useCollection from "../../hooks/useCollection";
 
 const Body = () => {
   const { documents: reviews } = useCollection("reviews");
+  let reviewMap = new Map();
+  reviews.forEach((review) => reviewMap.set(review.channel.count, review));
 
+  const sortedReviews = Array.from(reviewMap.values()).sort(
+    (a, b) => b.channel.count - a.channel.count
+  );
+
+  console.log("sortedReviews", sortedReviews);
   return (
     <div className={classes.body}>
       <div className={classes.containerFind}>
@@ -18,8 +25,10 @@ const Body = () => {
       </div>
       <hr />
       <nav className={classes.containerNavBody}>
-        {reviews.slice(0, 3).map((channel) => (
+        {sortedReviews.slice(0, 3).map((channel) => (
           <Ranking channel={channel} id={channel.id} key={channel.id} />
+          // {reviews.slice(0, 3).map((channel) => (
+          //   <Ranking channel={channel} id={channel.id} key={channel.id} />
         ))}
       </nav>
     </div>
